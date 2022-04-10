@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev-start" : "nodemon server.js"
+  },
+  "name": "jobservice",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sintayehu-B/MicroService-API-of-BaleMoya-App.git~.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sintayehu-B/MicroService-API-of-BaleMoya-App.git~/issues"
+  },
+  "homepage": "https://github.com/sintayehu-B/MicroService-API-of-BaleMoya-App.git~#readme",
+  "description": ""
+}
