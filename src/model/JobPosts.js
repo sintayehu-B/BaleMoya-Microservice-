@@ -40,7 +40,22 @@ const JobPostSchema = new mongoose.Schema(
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: "UserProfessional",
     // },
-    
+    employerId: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserCompany",
+      },
+    ],
+    // new Field
+    salary: {
+      type: Number,
+      required: [true, "A company must provide salary"],
+    },
+    // new field
+    companySize: {
+      type: Number,
+      required: [true, "A company must few employees"],
+    },
   },
   { timestamps: true }
 );
