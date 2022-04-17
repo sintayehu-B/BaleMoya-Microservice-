@@ -34,3 +34,38 @@ router.delete("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  // Get Post
+router.get("/:id", async (req, res) => {
+    try {
+      const post = await jobPost.findById(req.params.id);
+      res.status(200).json(post);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
+  // Get all posts
+  router.get("/", async (req, res) => {
+    const companyName = req.query.company;
+    const tag = req.query.tag;
+    try {
+      let posts;
+      if (companyName) {
+        posts = await jobPost.find({ companyName });
+      } else if (tag) {
+        posts = await jobPost.find({
+          tag: {
+            $in: [tag],
+          },
+        });
+      } else {
+        posts = await jobPost.find();
+      }
+      res.status(200).json(posts);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
+  module.exports = router;
