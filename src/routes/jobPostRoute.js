@@ -1,6 +1,34 @@
 const router = require("express").Router();
 const jobPost = require("../model/JobPost");
 
+
+// Update new Post
+// to be changed latter
+router.patch("/:id", async (req, res) => {
+    try {
+      const post = await jobPost.findById(req.params.id);
+  
+      if (post.id === req.body.id) {
+        try {
+          const updatedPost = await jobPost.findByIdAndUpdate(
+            req.params.id,
+            {
+              $set: req.body,
+            },
+            { new: true }
+          );
+          res.status(200).json(updatedPost);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      } else {
+        res.status(401).json("You can only update your post !");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
 // Create Post
 
 router.post("/", async (req, res) => {
